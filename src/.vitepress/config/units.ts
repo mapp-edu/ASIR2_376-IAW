@@ -34,11 +34,12 @@ import type { NavGroup } from '../shared/navigation'
 
 // --- Navbar de la unidad principal ---
 const baseNavbar: DefaultTheme.NavItem[] = [
-  { text: '🏠 Inicio', link: '/' },
+  { text: '🏠 Inici', link: '/' },
   {
-    text: '📚 Unidades',
+    text: '📚 Unitats',
     items: [
       { text: 'General', link: '/index' },
+	  { text: 'UP1', link: '/contenidos/1-introduccion' },
     ]
   },
 ]
@@ -46,70 +47,14 @@ const baseNavbar: DefaultTheme.NavItem[] = [
 // --- Sidebar de la unidad principal ---
 const baseSidebar: DefaultTheme.SidebarItem[] = [
   {
-    text: '📚 Primeros pasos',
+    text: '📚 Continguts',
     collapsed: false,
     items: [
-      { text: 'Introducción', link: '/contenidos/1-introduccion' },
-      { text: 'Instalación y Arranque', link: '/contenidos/2-instalacion' },
-      { text: 'Estructura del Proyecto', link: '/contenidos/3-estructura' },
+      { text: 'Introducció', link: '/continguts/1-introduccio' },
+      { text: 'Unitat 1: Conceptes sobre aplicacions web i instal·lació de servidors d\'aplicacions web', link: '/continguts/2-up1' },
+      { text: 'Unitat 2: Implantació, Administració, Adaptació i personalització de gestors de continguts', link: '/continguts/3-up2' },
     ]
   },
-  {
-    text: '🛠️ Configura tu curso',
-    collapsed: false,
-    items: [
-      { text: 'Curso único', link: '/contenidos/4-curso-unico' },
-      { text: 'Curso modular', link: '/contenidos/5-curso-modular' },
-      { text: 'Configuración e Identidad', link: '/contenidos/6-configuracion' },
-    ]
-  },
-  {
-    text: '✍️ Crea contenidos',
-    collapsed: false,
-    items: [
-      { text: 'Crear Contenidos', link: '/contenidos/7-crear-contenidos' },
-      { text: 'Catálogo de Componentes', link: '/contenidos/8-componentes' },
-    ]
-  },
-  {
-    text: '🎞️ Diapositivas e Imágenes',
-    collapsed: true,
-    items: [
-      { text: 'Crear Diapositivas', link: '/contenidos/9-diapositivas' },
-      { text: 'Catálogo de Patrones', link: '/contenidos/10-diapositivas-demo' },
-      { text: 'Imágenes para Contenido', link: '/contenidos/11-imagenes' },
-    ]
-  },
-  {
-    text: '🌐 Publicación',
-    collapsed: true,
-    items: [
-      { text: 'Despliegue', link: '/contenidos/12-despliegue' },
-      { text: 'Privacidad y Acceso', link: '/contenidos/14-privacidad-acceso' },
-    ]
-  },
-  {
-    text: '📖Ejemplos',
-    collapsed: true,
-    items: [
-      { text: 'Guia del curso', link: '/contenidos/13-ejemplo-guia' },
-    ]
-  },
-  {
-    text: '🗂️ Ejercicios',
-    collapsed: true,
-    items: [
-      { text: 'Introducción', link: '/ejercicios/' },
-      { text: 'Imágenes en Ejercicios', link: '/ejercicios/imagenes-ejercicios' },
-      {
-        text: 'Ejemplos',
-        items: [
-          { text: 'Historia gamificada (parallax)', link: '/ejercicios/ejercicio' },
-          { text: 'Enunciado directo (Markdown)', link: '/ejercicios/enunciado' },
-        ]
-      }
-    ]
-  }
 ]
 
 // ============================================================================
@@ -161,9 +106,9 @@ export const UNITS: Record<string, UnitConfig> = {
   MODULO: {
     id: 'MODULO',
     code: 'general',    // → archivos en src/general/
-    title: 'Modulo General',
-    fullTitle: 'Modulo General - Fundamentos',
-    siteTitle: 'Modulo</br>General',
+    title: 'Introducció',
+    fullTitle: 'IAW - Introducció',
+    siteTitle: 'Introducció',
     icon: '📘',
     navbar: baseNavbar,
     sidebar: baseSidebar

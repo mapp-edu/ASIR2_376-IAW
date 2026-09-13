@@ -1,12 +1,12 @@
 ---
 layout: doc
-title: Introducción
+title: Introducció
 sidebar: true
 outline: [2, 3]
 aside: true
 ---
 
-# 🧭 Introducción a EduPress
+# 🧭 Benvinguda al mòdul
 
 EduPress es una plantilla educativa construida sobre VitePress, diseñada para que los docentes puedan crear cursos, temarios y materiales didácticos online sin necesidad de conocimientos técnicos avanzados.
 
