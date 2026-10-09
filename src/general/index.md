@@ -1,135 +1,127 @@
 ---
 layout: doc
-title: Implantació d'Aplicacions Web
-description: Segon curs del CFGS d'Administració de Sistemes Informàtics en Xarxa
+title: Implantación de Aplicaciones Web
+description: Segundo curso del CFGS de Administración de Sistemas Informáticos en Red
 sidebar: true
 outline: [2, 3]
 aside: true
 ---
 
-## 📘 Implantació d'Aplicacions Web
+# 📘 Implantación de Aplicaciones Web
 
-El mòdul d'Implantació d'Aplicacions Web capacita l'alumnat per instal·lar, configurar i administrar els servidors, els gestors de continguts i les aplicacions web que sustenten la majoria dels serveis digitals de les organitzacions actuals. El perfil professional associat -administrador o administradora d'aplicacions web- és una figura demandada en petites i mitjanes empreses, departaments de sistemes de grans organitzacions i proveïdors d'allotjament i serveis cloud.
+El módulo de Implantación de Aplicaciones Web capacita al alumnado para instalar, configurar y administrar los servidores, los gestores de contenidos y las aplicaciones web que sustentan la mayoría de los servicios digitales de las organizaciones actuales. El perfil profesional asociado —administrador o administradora de aplicaciones web— es una figura demandada en pequeñas y medianas empresas, departamentos de sistemas de grandes organizaciones y proveedores de alojamiento y servicios cloud.
+
+::: info-box Ficha del módulo
+- **Ciclo:** CFGS Administración de Sistemas Informáticos en Red (ASIR), 2º curso.
+- **Modalidad:** presencial, 4 horas semanales.
+- **Lengua de los materiales:** castellano.
+:::
 
 ## 🚀 Transversalidad
 
-El mòdul es relaciona directament amb altres mòduls del cicle, especialment amb Implantació de Sistemes Operatius, Serveis en Xarxa i Seguretat i Alta Disponibilitat, i estableix les bases per al mòdul de Formació en Centres de Treball (FCT), en què bona part de l'alumnat desenvoluparà tasques d'administració de CMS, servidors LAMP/LEMP i intranets corporatives.
+El módulo se relaciona directamente con otros módulos del ciclo, especialmente con Implantación de Sistemas Operativos, Servicios de Red e Internet y Seguridad y Alta Disponibilidad, y sienta las bases para el módulo de Formación en Centros de Trabajo (FCT), en el que buena parte del alumnado desarrollará tareas de administración de CMS, servidores LAMP/LEMP e intranets corporativas.
 
-## 🛠️ Anàlisi de l'stack tecnològic del sector
+## 🛠️ Análisis del stack tecnológico del sector
 
-Abans de dissenyar les unitats de treball s'ha realitzat una anàlisi de l'stack tecnològic que empren actualment les empreses dedicades a la implantació i el manteniment d'aplicacions web, a fi que els continguts, eines i pràctiques del mòdul responguin a la realitat del mercat laboral valencià i nacional.
+Antes de diseñar las unidades de trabajo se ha realizado un análisis del stack tecnológico que emplean actualmente las empresas dedicadas a la implantación y el mantenimiento de aplicaciones web, con el fin de que los contenidos, herramientas y prácticas del módulo respondan a la realidad del mercado laboral valenciano y nacional.
 
-### Sistemes operatius de servidor
+### Sistemas operativos de servidor
 
-El mercat de servidors web està dominat àmpliament per sistemes GNU/Linux. Les distribucions més utilitzades en entorns empresarials són: 
-- Ubuntu Server LTS — distribució de referència en proveïdors cloud (AWS, Azure, Google Cloud, Hetzner) pel seu cicle de suport llarg i la seva àmplia documentació. 
-- Debian — molt utilitzada en hosting compartit i en entorns que prioritzen estabilitat. 
-- AlmaLinux / Rocky Linux — substitutes de CentOS després de descontinuar-les, habituals en panells de control com cPanel o Plesk. 
-- Windows Server amb IIS — minoritari fora d'entorns .NET, però present a organitzacions amb infraestructura Microsoft.
+El mercado de servidores web está dominado ampliamente por sistemas GNU/Linux. Las distribuciones más utilizadas en entornos empresariales son:
 
-Per al mòdul s'ha optat per Ubuntu Server LTS com a sistema base de les pràctiques, per ser el més estès en l'oferta de proveïdors cloud i en la documentació oficial dels CMS i aplicacions que s'implantaran.
+- **Ubuntu Server LTS** — distribución de referencia en proveedores cloud (AWS, Azure, Google Cloud, Hetzner) por su ciclo de soporte largo y su amplia documentación.
+- **Debian** — muy utilizada en hosting compartido y en entornos que priorizan la estabilidad.
+- **AlmaLinux / Rocky Linux** — sustitutas de CentOS tras su descontinuación, habituales en paneles de control como cPanel o Plesk.
+- **Windows Server con IIS** — minoritario fuera de entornos .NET, pero presente en organizaciones con infraestructura Microsoft.
 
-### Servidors web 
+Para el módulo se ha optado por Ubuntu Server LTS como sistema base de las prácticas, por ser el más extendido en la oferta de proveedores cloud y en la documentación oficial de los CMS y aplicaciones que se implantarán.
 
-- Apache HTTP Server — el més utilitzat històricament, amb un ampli suport de mòduls (mod_php, mod_rewrite, mod_ssl) i compatibilitat total amb els CMS del bloc de continguts. 
-- Nginx — cada vegada més present, especialment com a servidor intermediari invers i balancejador davant d'Apache o d'intèrprets PHP-FPM, pel baix consum de recursos. 
-- LiteSpeed ​​/ OpenLiteSpeed ​​— l'adopció creixent en hosting orientat a WordPress pel seu rendiment amb memòria cau integrada.
+### Servidores web
 
-El mòdul treballa Apache com a servidor principal (pel seu paper central al currículum i la seva facilitat docent) i introdueix Nginx com a proxy invers a la unitat de seguretat, reflectint l'arquitectura híbrida Nginx + Apache/PHP-FPM habitual en producció.
+- **Apache HTTP Server** — el más utilizado históricamente, con un amplio soporte de módulos (`mod_php`, `mod_rewrite`, `mod_ssl`) y compatibilidad total con los CMS del bloque de contenidos.
+- **Nginx** — cada vez más presente, especialmente como proxy inverso y balanceador delante de Apache o de intérpretes PHP-FPM, por su bajo consumo de recursos.
+- **LiteSpeed / OpenLiteSpeed** — adopción creciente en hosting orientado a WordPress por su rendimiento con caché integrada.
 
-### Llenguatges de script de servidor 
+El módulo trabaja Apache como servidor principal (por su papel central en el currículo y su facilidad docente) e introduce Nginx como proxy inverso en la unidad de seguridad, reflejando la arquitectura híbrida Nginx + Apache/PHP-FPM habitual en producción.
 
-- PHP — continua sent el llenguatge predominant a la Web, en ser la base de WordPress, Joomla, Drupal, Moodle i Nextcloud; versions 8.x amb gestor de dependències Composer. 
-- Node.js (JavaScript en servidor) — molt present en aplicacions a mida i APIs REST modernes. 
-- Python (Django/Flask) — utilitzat en aplicacions d'anàlisi de dades i automatització i creixent en pimes tecnològiques.
+### Lenguajes de script de servidor
 
-Atès que el currículum exigeix ​​treballar «un llenguatge de guions concret» i que l'ecosistema de gestors de continguts del mateix mòdul (RA2, RA3, RA7) es recolza en PHP, se selecciona PHP com a llenguatge vehicular de les unitats RA5 i RA6, sense perjudici d'esmentar Node.js i Python com a alternatives del mercat.
+- **PHP** — sigue siendo el lenguaje predominante en la Web, al ser la base de WordPress, Joomla, Drupal, Moodle y Nextcloud; versiones 8.x con el gestor de dependencias Composer.
+- **Node.js** (JavaScript en servidor) — muy presente en aplicaciones a medida y APIs REST modernas.
+- **Python** (Django/Flask) — utilizado en aplicaciones de análisis de datos y automatización, y creciente en pymes tecnológicas.
 
-### Sistemes gestors de bases de dades 
+Dado que el currículo exige trabajar «un lenguaje de guiones concreto» y que el ecosistema de gestores de contenidos del propio módulo (RA2, RA3, RA7) se apoya en PHP, se selecciona PHP como lenguaje vehicular de las unidades de RA5 y RA6, sin perjuicio de mencionar Node.js y Python como alternativas del mercado.
 
-- MySQL/MariaDB — el binomi més estès en aplicacions web, amb compatibilitat total amb els CMS treballats. 
-- PostgreSQL — en expansió en projectes que requereixen integritat i funcions avançades. 
-- SQLite — usat en entorns de desenvolupament lleuger i proves.
+### Sistemas gestores de bases de datos
 
-Es treballarà MariaDB (fork lliure de MySQL, inclòs per defecte als repositoris d'Ubuntu Server) com a SGBD de referència, gestionat mitjançant phpMyAdmin i línia d'ordres.
+- **MySQL / MariaDB** — el binomio más extendido en aplicaciones web, con compatibilidad total con los CMS trabajados.
+- **PostgreSQL** — en expansión en proyectos que requieren integridad y funciones avanzadas.
+- **SQLite** — usado en entornos de desarrollo ligero y pruebas.
 
-### Entorns integrats de desenvolupament i proves 
+Se trabajará MariaDB (fork libre de MySQL, incluido por defecto en los repositorios de Ubuntu Server) como SGBD de referencia, gestionado mediante phpMyAdmin y línea de órdenes.
 
-- XAMPP / WAMP / MAMP — entorns multiplataforma «tot en un» (Apache + MySQL/MariaDB + PHP) molt utilitzats per a proves locals ràpides. 
-- Docker i Docker Compose — la tendència dominant en empreses per desplegar entorns reproduïbles (contenidors d'Apache, PHP-FPM, MariaDB, Nginx) tant en desenvolupament com en producció. 
-- Laragon — alternativa lleugera orientada a desenvolupament PHP a Windows.
+### Entornos integrados de desarrollo y pruebas
 
-El mòdul utilitza XAMPP o un LAMP nadiu sobre Ubuntu Server per a l'aprenentatge de la instal·lació “pas a pas” (RA1) i afegeix una introducció a Docker Compose com a plataforma integrada de prova i desplegament, en compliment del criteri d'avaluació 1.h).
+- **XAMPP / WAMP / MAMP** — entornos multiplataforma «todo en uno» (Apache + MySQL/MariaDB + PHP) muy utilizados para pruebas locales rápidas.
+- **Docker y Docker Compose** — la tendencia dominante en empresas para desplegar entornos reproducibles (contenedores de Apache, PHP-FPM, MariaDB, Nginx) tanto en desarrollo como en producción.
+- **Laragon** — alternativa ligera orientada al desarrollo PHP en Windows.
 
-### Gestors de continguts (CMS) 
+El módulo utiliza XAMPP o un LAMP nativo sobre Ubuntu Server para el aprendizaje de la instalación «paso a paso» (RA1) y añade una introducción a Docker Compose como plataforma integrada de prueba y despliegue, en cumplimiento del criterio de evaluación 1.h).
 
-- WordPress — líder indiscutible del mercat de CMS, tant per a llocs corporatius com per a botigues en línia mitjançant WooCommerce. 
-- Joomla — utilitzat en portals institucionals i corporatius de complexitat mitjana. 
-- Drupal — orientat a projectes de més envergadura que requereixen alta personalització i seguretat. 
-- Moodle — gestor de continguts educatius (LMS), molt rellevant en el context de centres educatius i d'empreses de formació.
+### Gestores de contenidos (CMS)
 
-Es treballaran els tres CMS generalistes (WordPress, Joomla i Drupal) per donar compliment al criteri de classificació i comparació (CE 2.b i 2.d), aprofundint especialment en WordPress per la seva quota de mercat i la seva adaptació (RA7).
+- **WordPress** — líder indiscutible del mercado de CMS, tanto para sitios corporativos como para tiendas en línea mediante WooCommerce.
+- **Joomla** — utilizado en portales institucionales y corporativos de complejidad media.
+- **Drupal** — orientado a proyectos de mayor envergadura que requieren alta personalización y seguridad.
+- **Moodle** — gestor de contenidos educativos (LMS), muy relevante en el contexto de centros educativos y de empresas de formación.
 
-### Aplicacions d'ofimàtica web 
+Se trabajarán los tres CMS generalistas (WordPress, Joomla y Drupal) para dar cumplimiento al criterio de clasificación y comparación (CE 2.b y 2.d), profundizando especialmente en WordPress por su cuota de mercado y su adaptación (RA7).
 
-- Nextcloud — plataforma lliure de treball col·laboratiu i intranet, amb edició de documents integrant Col·labora Online o ONLYOFFICE. 
-- Google Workspace i Microsoft 365 — solucions SaaS líders al mercat, de referència obligada encara que no s'instal·lin a l'aula per ser-ne propietàries. 
-- OpenProject / Redmine — gestió de projectes col·laboratius de codi obert.
+### Aplicaciones de ofimática web
 
-Per a les pràctiques d'instal·lació s'utilitzarà Nextcloud amb ONLYOFFICE com a suite ofimàtica web autoallotjada, per ser programari lliure, integrable a una intranet i coherent amb la resta de l'stack LAMP treballat al mòdul; s'estudiaran com a referència comparativa Google Workspace i Microsoft 365.
+- **Nextcloud** — plataforma libre de trabajo colaborativo e intranet, con edición de documentos integrando Collabora Online u ONLYOFFICE.
+- **Google Workspace y Microsoft 365** — soluciones SaaS líderes en el mercado, de referencia obligada aunque no se instalen en el aula por ser propietarias.
+- **OpenProject / Redmine** — gestión de proyectos colaborativos de código abierto.
 
-### Seguretat i bones pràctiques 
+Para las prácticas de instalación se utilizará Nextcloud con ONLYOFFICE como suite ofimática web autoalojada, por ser software libre, integrable en una intranet y coherente con el resto del stack LAMP trabajado en el módulo; se estudiarán como referencia comparativa Google Workspace y Microsoft 365.
 
-- Certificats TLS gratuïts mitjançant Let's Encrypt/Certbot. 
-- Tallafocs d'aplicació (UFW, fail2ban) i hardening de SSH. 
-- Polítiques de còpies de seguretat automatitzades i control de versions (Git) per al codi desplegat.
+### Seguridad y buenas prácticas
 
-Aquests aspectes s'integren de forma transversal a totes les unitats de treball, i es compleixen els criteris d'avaluació relatius a seguretat en l'accés a servidors, CMS i aplicacions d'ofimàtica (CE 1.g, 2.f, 4.f, 5.h, 6.f).
+- Certificados TLS gratuitos mediante Let's Encrypt / Certbot.
+- Cortafuegos de aplicación (UFW, fail2ban) y *hardening* de SSH.
+- Políticas de copias de seguridad automatizadas y control de versiones (Git) para el código desplegado.
 
-### Síntesi: stack tecnològic de referència del mòdul
+Estos aspectos se integran de forma transversal en todas las unidades de trabajo, y con ellos se cumplen los criterios de evaluación relativos a la seguridad en el acceso a servidores, CMS y aplicaciones de ofimática (CE 1.g, 2.f, 4.f, 5.h, 6.f).
 
-| Capa | Tecnologia seleccionada per a l'aula |
-|------|--------------------------------------|
-| Sistema operatiu | Ubuntu Server LTS |
-| Servidor web | Apache HTTP Server (+ Nginx com a servidor intermediari invers) |
-| Llenguatge de seqüència de servidor | PHP 8.x + Composer |
-| Sistema gestor de base de dades | MariaDB + phpMyAdmin |
-| Entorn integrat de proves | XAMPP / LAMP nadiu + Docker Compose |
-| Gestors de continguts | WordPress (principal), Joomla i Drupal (comparativa) |
-| Ofimàtica web | Nextcloud + ONLYOFFICE (comparativa amb Google Workspace/M365) |
-| Seguretat | Let's Encrypt, UFW, fail2ban, còpies de seguretat, Git |
+### Síntesis: stack tecnológico de referencia del módulo
 
-## ✍️ Resultats d'aprenentatge i la seva relació amb les unitats de treball
+| Capa | Tecnología seleccionada para el aula |
+|:-----|:-------------------------------------|
+| Sistema operativo | Ubuntu Server LTS |
+| Servidor web | Apache HTTP Server (+ Nginx como proxy inverso) |
+| Lenguaje de script de servidor | PHP 8.x + Composer |
+| Sistema gestor de bases de datos | MariaDB + phpMyAdmin |
+| Entorno integrado de pruebas | XAMPP / LAMP nativo + Docker Compose |
+| Gestores de contenidos | WordPress (principal), Joomla y Drupal (comparativa) |
+| Ofimática web | Nextcloud + ONLYOFFICE (comparativa con Google Workspace / M365) |
+| Seguridad | Let's Encrypt, UFW, fail2ban, copias de seguridad, Git |
 
-El mòdul s'organitza en 7 unitats de treball (UT), cadascuna vinculada a un resultat d'aprenentatge (RA) del currículum oficial, de manera que la superació de la unitat implica l'avaluació dels criteris associats a aquest RA.
-| UP | Títol de la unitat de programació | RA | Hores |
-|----|-----------------------------------|----|-------|
-| [UP1](./contenidos/2-up1) | Conceptes sobre aplicacions web i instal·lació de servidors d'aplicacions web | 1 | 20 |
-| [UP2](./contenidos/3-up2) | Implantació de gestors de continguts | 2 | 20 |
-| [UP3](./contenidos/4-up3) | Administració de gestors de continguts | 3 | 20 |
-| [UP4](./contenidos/5-up4) | Adaptació i personalització de gestors de continguts | 7 | 15 |
-| [UP5](./contenidos/6-up5) | Programació de documents web amb llenguatges d'script de servidor (PHP) | 5 | 25 |
-| [UP6](./contenidos/7-up6) | Accés a bases de dades des de llenguatges d'script de servidor | 6 | 25 |
-| [UP7](./contenidos/8-up7) | Gestió d'aplicacions d'ofimàtica web | 4 | 15 |
+## ✍️ Resultados de aprendizaje y su relación con las unidades de programación
 
-## 🎞️ Diapositivas e imágenes
+El módulo se organiza en 7 unidades de programación (UP), cada una vinculada a un resultado de aprendizaje (RA) del currículo oficial, de manera que la superación de la unidad implica la evaluación de los criterios asociados a ese RA.
 
-| Guía | Descripción |
-|------|-------------|
-| [9. Crear diapositivas](./contenidos/9-diapositivas) | Componente SlidesViewer — guía completa |
-| [10. Catálogo de patrones](./contenidos/10-diapositivas-demo) | Demo visual de todos los layouts de diapositiva |
-| [11. Imágenes para contenido](./contenidos/11-imagenes) | Rutas, formatos y optimización |
+| UP | Título de la unidad de programación | RA | Peso | Horas |
+|:---|:------------------------------------|:--:|:----:|:-----:|
+| [UP1](/up1/) | Conceptos sobre aplicaciones web e instalación de servidores de aplicaciones web | 1 | 10 % | 20 |
+| [UP2](/up2/) | Implantación de gestores de contenidos | 2 | 10 % | 20 |
+| [UP3](/up3/) | Administración de gestores de contenidos | 3 | 10 % | 20 |
+| [UP4](/up4/) | Adaptación y personalización de gestores de contenidos | 7 | 10 % | 15 |
+| [UP5](/up5/) | Programación de documentos web con lenguajes de script de servidor (PHP) | 5 | 25 % | 25 |
+| [UP6](/up6/) | Acceso a bases de datos desde lenguajes de script de servidor | 6 | 25 % | 25 |
+| [UP7](/up7/) | Gestión de aplicaciones de ofimática web | 4 | 10 % | 15 |
 
-## 🌐 Publicación
-
-| Guía | Descripción |
-|------|-------------|
-| [12. Despliegue](./contenidos/12-despliegue) | GitHub Pages, GitHub Actions y troubleshooting |
+El detalle de cada RA, con sus criterios de evaluación y contenidos, está en [Resultados de aprendizaje](./contenidos/2-resultados-aprendizaje). La forma de puntuar cada práctica se explica en [Evaluación y rúbricas](./contenidos/3-evaluacion).
 
 ---
 
-## 🗂️ Ejercicios de ejemplo
-
-El módulo incluye dos modelos de ejercicio listos para usar como referencia:
-
-[Ver los ejercicios →](./ejercicios/)
+**Siguiente paso:** [Organización y recursos →](./contenidos/1-organizacion)

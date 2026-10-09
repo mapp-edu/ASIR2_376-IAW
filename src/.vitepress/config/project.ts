@@ -25,13 +25,13 @@ export const PROJECT = {
   // --------------------------------------------------------------------------
   // IDIOMA
   // --------------------------------------------------------------------------
-  lang: 'ca-ES',
+  lang: 'es-ES',
 
   // --------------------------------------------------------------------------
   // DESCRIPCIÓN DEL SITIO
   // --------------------------------------------------------------------------
   // Aparece en los metadatos SEO y como subtítulo en buscadores.
-  description: 'Implantació d\'Aplicacions Web',
+  description: 'Implantación de Aplicaciones Web — 2º CFGS ASIR',
 
   // --------------------------------------------------------------------------
   // COPYRIGHT (pie de página)
