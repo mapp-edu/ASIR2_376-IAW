@@ -109,6 +109,92 @@ Cada proyecto publica sus requisitos actualizados: [WordPress](https://wordpress
 
 Este es el procedimiento completo sobre el servidor Ubuntu de la [UP1](/up1/contenidos/5-instalacion-servidores), con Apache, MariaDB y PHP ya instalados.
 
+### Antes de empezar: la red entre las máquinas virtuales
+
+En el aula se trabaja con dos máquinas virtuales de VirtualBox: el **servidor** Ubuntu Server, sin entorno gráfico, y un **cliente** Windows 10 con navegador, desde el que se ejecuta el asistente web. Las dos tienen que verse entre sí y el servidor necesita salida a Internet para instalar paquetes y descargar WordPress.
+
+La forma más sencilla de conseguirlo es una **Red NAT** de VirtualBox: una red privada compartida por varias máquinas virtuales, con DHCP y salida a Internet a través del anfitrión.
+
+```mermaid
+flowchart LR
+    I(("Internet")) --- G["Anfitrión<br>pasarela 10.0.2.1"]
+    G --- S["Servidor Ubuntu<br>10.0.2.100 (fija)"]
+    G --- C["Cliente Windows 10<br>10.0.2.x (DHCP)"]
+    C -- "http://wordpress.empresa.local" --> S
+```
+
+| Modo de red de VirtualBox | ¿Se ven entre sí? | ¿Salen a Internet? | Cuándo usarlo |
+|:--------------------------|:------------------|:-------------------|:--------------|
+| **NAT** | No: cada máquina está aislada y todas reciben `10.0.2.15` | Sí | Una sola máquina que solo necesita Internet. |
+| **Red NAT** | Sí | Sí | **Esta práctica**: servidor y cliente virtuales. |
+| **Adaptador puente** | Sí, y también con el equipo físico y la red del aula | Sí | Para acceder desde el anfitrión u otros equipos. Algunas redes de centro lo limitan. |
+| **Solo anfitrión** | Sí, y con el anfitrión | No | Combinado con un segundo adaptador NAT en el servidor. |
+
+::: warning-box «NAT» no es lo mismo que «Red NAT»
+Es el error más habitual. Con **NAT** a secas, cada máquina queda en su propia red, las dos tienen la IP `10.0.2.15` y no hay forma de que el cliente llegue al servidor.
+:::
+
+#### 1. Crear la Red NAT
+
+En VirtualBox, **Archivo → Herramientas → Administrador de red**, pestaña **Redes NAT**, botón **Crear**. Ponle un nombre (por ejemplo, `RedIAW`), deja el prefijo `10.0.2.0/24` y marca **Habilitar DHCP**.
+
+#### 2. Conectar las dos máquinas
+
+Con cada máquina **apagada**, en **Configuración → Red → Adaptador 1**:
+
+- **Conectado a:** Red NAT.
+- **Nombre:** `RedIAW`.
+- En **Avanzadas**, comprueba que **Cable conectado** está marcado y que la **dirección MAC** no coincide con la de la otra máquina. Si una máquina es un clon de la otra, regenera la MAC con el botón de al lado.
+
+#### 3. Dar una IP fija al servidor
+
+WordPress guarda en la base de datos la dirección con la que se ejecuta el asistente. Si la IP del servidor cambiase, el sitio dejaría de cargar bien, así que se le asigna una IP fija fuera del rango que suele repartir el DHCP.
+
+Consulta el nombre de la interfaz y el del fichero de netplan:
+
+```bash
+ip -br a              # la interfaz suele llamarse enp0s3
+ls /etc/netplan/      # normalmente 50-cloud-init.yaml
+```
+
+Edita el fichero (`sudo nano /etc/netplan/50-cloud-init.yaml`) y déjalo así:
+
+```yaml
+network:
+  version: 2
+  ethernets:
+    enp0s3:
+      dhcp4: false
+      addresses: [10.0.2.100/24]
+      routes:
+        - to: default
+          via: 10.0.2.1
+      nameservers:
+        addresses: [10.0.2.1, 8.8.8.8]
+```
+
+En una Red NAT de VirtualBox la pasarela es siempre la primera dirección de la red: `10.0.2.1`. Aplica los cambios y comprueba la conexión:
+
+```bash
+sudo netplan apply
+ip -br a              # debe aparecer 10.0.2.100/24
+ping -c 2 google.es   # salida a Internet y DNS
+```
+
+::: tip-box El cortafuegos del servidor
+Comprueba el estado con `sudo ufw status`. Si está activo, abre el puerto 80 con `sudo ufw allow 'Apache'` (o `'Apache Full'` si después se añade HTTPS). Si está inactivo, no hay que hacer nada.
+:::
+
+#### 4. Comprobar el cliente Windows
+
+En una consola (`cmd`), `ipconfig` debe mostrar una dirección `10.0.2.x`. Después comprueba que llega al servidor con `ping 10.0.2.100`.
+
+::: details El cliente Windows no obtiene IP por DHCP
+- **La IP es `169.254.x.x`:** nadie responde por DHCP. Comprueba que el adaptador está en la Red NAT correcta y que el DHCP de la red está habilitado. Si lo está, desmárcalo, aplica, vuelve a marcarlo y aplica; o cierra VirtualBox del todo y ábrelo de nuevo. Después, `ipconfig /release` y `ipconfig /renew`.
+- **Pone «Medios desconectados»:** revisa **Cable conectado** en las opciones avanzadas del adaptador, y que el tipo sea *Intel PRO/1000 MT Desktop*.
+- **Solución rápida:** asigna una IP fija en **Propiedades de Ethernet → Protocolo de Internet versión 4 (TCP/IPv4)**: IP `10.0.2.101`, máscara `255.255.255.0`, puerta de enlace `10.0.2.1`, DNS `10.0.2.1` y `8.8.8.8`.
+:::
+
 ### 1. Crear la base de datos y su usuario
 
 ```sql
