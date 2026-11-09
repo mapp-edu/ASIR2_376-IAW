@@ -28,6 +28,12 @@ Instalarás WordPress de forma local usando AMPPS, configurando la base de datos
 - Completar la instalación de WordPress y acceder a su panel de administración.
 - Comprobar que la instalación ha quedado como se pedía.
 
+::: warning-box Instalación de AMPPS
+- Ejecuta el instalador **como administrador** (clic derecho → *Ejecutar como administrador*). Sin permisos puede cerrarse a mitad de la instalación sin dar ningún error.
+- Si se cierra o se queda colgado, desinstala AMPPS desde *Aplicaciones*, borra la carpeta `Ampps` que haya quedado (normalmente en `C:\Program Files`), reinicia y vuelve a instalarlo como administrador.
+- En el primer arranque, AMPPS descarga las aplicaciones de Internet: comprueba que la máquina tiene conexión. AMPPS no funciona a través de un proxy.
+:::
+
 ## Requisitos
 
 Sustituye `nomAlumno` por tu nombre en todos los identificadores.
