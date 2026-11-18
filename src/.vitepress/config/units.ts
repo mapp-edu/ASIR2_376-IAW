@@ -163,6 +163,7 @@ const sidebarUP3: DefaultTheme.SidebarItem[] = [
       { text: 'P3.2 Usuarios, roles y actividad', link: '/ejercicios/2-usuarios-roles' },
       { text: 'P3.3 Organización y sindicación', link: '/ejercicios/3-organizacion-sindicacion' },
       { text: 'P3.4 Proyecto integrador', link: '/ejercicios/4-proyecto-integrador-cms' },
+      { text: 'Simulacro de examen (1.ª evaluación)', link: '/ejercicios/5-simulacro-1ev' },
     ]
   },
 ]

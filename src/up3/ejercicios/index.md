@@ -15,6 +15,10 @@ aside: true
 | [P3.3 Organización de contenidos, plantillas y sindicación](./3-organizacion-sindicacion) | Ordenar la revista en secciones, adaptar plantillas y publicar *feeds*. | 3a, 3f, 3g |
 | [P3.4 Proyecto integrador: un CMS de principio a fin](./4-proyecto-integrador-cms) | Montar un sitio completo sobre XAMPP, con memoria y vídeo. | 1a, 1c, 1i, 2c, 2e, 3b, 3c, 3d |
 
+## Simulacro de examen
+
+El [simulacro de examen de la 1.ª evaluación](./5-simulacro-1ev) tiene el mismo formato y duración que el examen de las unidades 1 a 3: un test de 20 preguntas y una práctica sobre tu proyecto de la P3.4. Hazlo cronometrando las 2 horas.
+
 ## El proyecto del portal interno
 
 La P3.1 continúa el proyecto del [portal interno con WordPress](/up2/ejercicios/) que empezó en la UP2. Se trabaja sobre el mismo sitio y se sigue ampliando el mismo manual de usuario.

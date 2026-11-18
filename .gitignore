@@ -42,3 +42,6 @@ soluciones/
 
 # Vídeos de las unidades y sus materiales de producción: no se suben al repositorio
 videos/
+
+# Exámenes y simulacros: uso interno del profesorado, no se publican
+examenes/

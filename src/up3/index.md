@@ -60,6 +60,8 @@ Un CMS instalado necesita mantenimiento: hay que tenerlo actualizado, ampliarlo 
 | [P3.3 Organización de contenidos, plantillas y sindicación](./ejercicios/3-organizacion-sindicacion) | Ordenar una revista en secciones, adaptar plantillas y publicar *feeds*. | 3a, 3f, 3g |
 | [P3.4 Proyecto integrador: un CMS de principio a fin](./ejercicios/4-proyecto-integrador-cms) | Montar un sitio completo sobre XAMPP, con memoria y vídeo. | 1a, 1c, 1i, 2c, 2e, 3b, 3c, 3d |
 
+Para preparar el examen de la 1.ª evaluación, haz el [simulacro de examen](./ejercicios/5-simulacro-1ev).
+
 ---
 
 [Empezar por la administración de gestores de contenidos →](./contenidos/1-administracion-cms)
