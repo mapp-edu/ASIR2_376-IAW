@@ -35,3 +35,7 @@ Además de la máquina virtual, deja listo el entorno local siguiendo [Herramien
 ## Cómo se evalúan
 
 Cada práctica tiene su rúbrica, con un elemento evaluable por cada criterio de evaluación que recoge. Todas usan la [escala de niveles 0–4](/general/contenidos/3-evaluacion) del módulo.
+
+## Soluciones
+
+Las [soluciones de referencia](../soluciones/) de todas las prácticas de la unidad están publicadas, con sus archivos de apoyo. Úsalas para comprobar tu trabajo después de hacerlo.

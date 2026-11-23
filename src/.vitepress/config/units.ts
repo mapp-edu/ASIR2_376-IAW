@@ -60,6 +60,7 @@ const navbarUP1: DefaultTheme.NavItem[] = [
   { text: 'Portada de la unidad', link: '/index' },
   { text: 'Contenidos', link: '/contenidos/1-arquitecturas-web' },
   { text: 'Prácticas', link: '/ejercicios/' },
+  { text: 'Soluciones', link: '/soluciones/' },
 ]
 
 const sidebarUP1: DefaultTheme.SidebarItem[] = [
@@ -93,6 +94,18 @@ const sidebarUP1: DefaultTheme.SidebarItem[] = [
       { text: 'P1.5 Entorno con Docker Compose', link: '/ejercicios/5-docker-compose' },
     ]
   },
+  {
+    text: '✅ Soluciones',
+    collapsed: true,
+    items: [
+      { text: 'Índice de soluciones', link: '/soluciones/' },
+      { text: 'P1.1 Git y GitHub', link: '/soluciones/1-git-github' },
+      { text: 'P1.2 Requerimientos y sistema', link: '/soluciones/2-requerimientos-sistema' },
+      { text: 'P1.3 Apache y PHP en Ubuntu', link: '/soluciones/3-apache-ubuntu' },
+      { text: 'P1.4 MariaDB en Ubuntu', link: '/soluciones/4-mariadb-ubuntu' },
+      { text: 'P1.5 Entorno con Docker Compose', link: '/soluciones/5-docker-compose' },
+    ]
+  },
 ]
 
 // ── UP2 — Implantación de gestores de contenidos (RA2) ─────────────────────
@@ -100,6 +113,7 @@ const navbarUP2: DefaultTheme.NavItem[] = [
   { text: 'Portada de la unidad', link: '/index' },
   { text: 'Contenidos', link: '/contenidos/1-gestores-contenidos' },
   { text: 'Prácticas', link: '/ejercicios/' },
+  { text: 'Soluciones', link: '/soluciones/' },
 ]
 
 const sidebarUP2: DefaultTheme.SidebarItem[] = [
@@ -130,6 +144,20 @@ const sidebarUP2: DefaultTheme.SidebarItem[] = [
       { text: 'P2.6 Joomla y comparativa', link: '/ejercicios/6-joomla-remoto' },
     ]
   },
+  {
+    text: '✅ Soluciones',
+    collapsed: true,
+    items: [
+      { text: 'Índice de soluciones', link: '/soluciones/' },
+      { text: 'P2.1 Instalación de WordPress', link: '/soluciones/1-instalacion-wordpress' },
+      { text: 'P2.2 Uso básico de WordPress', link: '/soluciones/2-uso-basico-wordpress' },
+      { text: 'P2.3 WordPress en remoto', link: '/soluciones/3-wordpress-remoto' },
+      { text: 'P2.4 WordPress en LAMP', link: '/soluciones/4-wordpress-lamp' },
+      { text: 'P2.5 Moodle', link: '/soluciones/5-moodle' },
+      { text: 'P2.6 Joomla y comparativa', link: '/soluciones/6-joomla-remoto' },
+      { text: 'P2.6 · Informe modelo', link: '/soluciones/6-joomla-remoto-informe' },
+    ]
+  },
 ]
 
 // ── UP3 — Administración de gestores de contenidos (RA3) ───────────────────
@@ -137,6 +165,7 @@ const navbarUP3: DefaultTheme.NavItem[] = [
   { text: 'Portada de la unidad', link: '/index' },
   { text: 'Contenidos', link: '/contenidos/1-administracion-cms' },
   { text: 'Prácticas', link: '/ejercicios/' },
+  { text: 'Soluciones', link: '/soluciones/' },
 ]
 
 const sidebarUP3: DefaultTheme.SidebarItem[] = [
@@ -164,6 +193,18 @@ const sidebarUP3: DefaultTheme.SidebarItem[] = [
       { text: 'P3.3 Organización y sindicación', link: '/ejercicios/3-organizacion-sindicacion' },
       { text: 'P3.4 Proyecto integrador', link: '/ejercicios/4-proyecto-integrador-cms' },
       { text: 'Simulacro de examen (1.ª evaluación)', link: '/ejercicios/5-simulacro-1ev' },
+    ]
+  },
+  {
+    text: '✅ Soluciones',
+    collapsed: true,
+    items: [
+      { text: 'Índice de soluciones', link: '/soluciones/' },
+      { text: 'P3.1 Actualizaciones, plugins y copias', link: '/soluciones/1-actualizaciones-copias' },
+      { text: 'P3.2 Usuarios, roles y actividad', link: '/soluciones/2-usuarios-roles' },
+      { text: 'P3.3 Organización y sindicación', link: '/soluciones/3-organizacion-sindicacion' },
+      { text: 'P3.4 Proyecto integrador', link: '/soluciones/4-proyecto-integrador-cms' },
+      { text: 'P3.4 · Guion del vídeo', link: '/soluciones/4-proyecto-integrador-video' },
     ]
   },
 ]

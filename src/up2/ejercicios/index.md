@@ -60,3 +60,7 @@ Estas prácticas no forman parte del proyecto del portal. Cada una instala un ge
 | [P2.4 WordPress en un servidor LAMP](./4-wordpress-lamp) | Instalar WordPress a mano sobre el servidor Ubuntu de la UP1. | 2c, 2e, 2f, 2g |
 | [P2.5 Instalación de Moodle](./5-moodle) | Poner en marcha una plataforma de aprendizaje. | 2b, 2c, 2e, 2g |
 | [P2.6 Joomla en un servidor remoto](./6-joomla-remoto) | Instalar Joomla y comparar gestores de contenidos. | 2a, 2c, 2d, 2h |
+
+## Soluciones
+
+Las [soluciones de referencia](../soluciones/) de todas las prácticas de la unidad están publicadas, con sus archivos de apoyo. Úsalas para comprobar tu trabajo después de hacerlo.

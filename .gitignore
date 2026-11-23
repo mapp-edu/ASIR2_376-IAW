@@ -37,11 +37,12 @@ src/.vitepress/temp/
 .agents
 copilot-instructions.md
 skills-lock.json
-# Soluciones de las prácticas: uso interno del profesorado, no se publican
-soluciones/
+# Soluciones completas de las prácticas (con pautas de corrección): uso interno.
+# Las versiones para el alumnado están en src/<unidad>/soluciones/ y src/public/soluciones/.
+/soluciones/
 
 # Vídeos de las unidades y sus materiales de producción: no se suben al repositorio
 videos/
 
 # Exámenes y simulacros: uso interno del profesorado, no se publican
-examenes/
+/examenes/

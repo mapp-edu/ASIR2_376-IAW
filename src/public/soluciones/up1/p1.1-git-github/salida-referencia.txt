@@ -1,0 +1,184 @@
+
+### 1.1 Configuración (local al repositorio para no tocar la del equipo)
+$ git init -q
+$ git config user.name "Ana Alumna"
+$ git config user.email "ana.alumna@example.com"
+$ git symbolic-ref HEAD refs/heads/main
+$ git config --list --local
+core.repositoryformatversion=0
+core.filemode=true
+core.bare=false
+core.logallrefupdates=true
+user.name=Ana Alumna
+user.email=ana.alumna@example.com
+
+### 1.3 README.md
+$ git status --short
+?? README.md
+$ git add README.md
+$ git status --short
+A  README.md
+$ git commit -q -m "Añade el README con el propósito del repositorio"
+
+### 1.4 config/puertos.txt
+$ git add config/puertos.txt
+$ git commit -q -m "Añade la lista de puertos de los servicios"
+
+### 1.5 Nuevo puerto y diferencia antes de confirmar
+$ git diff
+diff --git a/config/puertos.txt b/config/puertos.txt
+index 0003874..3d5b593 100644
+--- a/config/puertos.txt
++++ b/config/puertos.txt
+@@ -2,3 +2,4 @@ HTTP   80/tcp
+ HTTPS  443/tcp
+ SSH    22/tcp
+ MySQL  3306/tcp
++FTP    21/tcp
+$ git commit -q -am "Añade puerto ftp"
+
+### 1.6 Corregir el mensaje de la última confirmación
+$ git commit -q --amend -m "Añade el puerto de FTP a la lista de puertos"
+
+### 1.7 Historia y autoría por línea
+$ git log --oneline
+bf684e1 Añade el puerto de FTP a la lista de puertos
+d7fa955 Añade la lista de puertos de los servicios
+6546a7e Añade el README con el propósito del repositorio
+$ git blame config/puertos.txt
+d7fa955e (Ana Alumna 2026-10-28 11:32:29 +0100 1) HTTP   80/tcp
+d7fa955e (Ana Alumna 2026-10-28 11:32:29 +0100 2) HTTPS  443/tcp
+d7fa955e (Ana Alumna 2026-10-28 11:32:29 +0100 3) SSH    22/tcp
+d7fa955e (Ana Alumna 2026-10-28 11:32:29 +0100 4) MySQL  3306/tcp
+bf684e11 (Ana Alumna 2026-10-28 11:32:29 +0100 5) FTP    21/tcp
+
+### 2.1 Borrar una línea sin preparar y recuperarla
+$ git status --short
+ M config/puertos.txt
+$ git restore config/puertos.txt
+$ git status --short
+
+### 2.2 Borrar, preparar, sacar del área de preparación y recuperar
+$ git add config/puertos.txt
+$ git status --short
+M  config/puertos.txt
+$ git restore --staged config/puertos.txt
+$ git status --short
+ M config/puertos.txt
+$ git restore config/puertos.txt
+$ git status --short
+
+### 2.3 Borrado accidental confirmado y deshecho con revert
+$ git rm -q README.md
+$ git commit -q -m "Elimina el README"
+$ git revert --no-edit HEAD
+[main eddb780] Revert "Elimina el README"
+ Date: Wed Oct 28 11:32:29 2026 +0100
+ 1 file changed, 3 insertions(+)
+ create mode 100644 README.md
+$ ls
+README.md
+config
+
+### 2.4 .gitignore
+$ git status --short
+?? .gitignore
+$ git add .gitignore
+$ git commit -q -m "Ignora los registros y el archivo de secretos"
+$ git status --short --ignored
+!! acceso.log
+!! secretos.txt
+$ git check-ignore -v acceso.log secretos.txt
+.gitignore:2:*.log	acceso.log
+.gitignore:5:secretos.txt	secretos.txt
+
+### 3.1 Rama apache con un virtual host
+$ git switch -q -c apache
+$ git add config/vhost-intranet.conf
+$ git commit -q -m "Añade el virtual host de la intranet"
+
+### 3.2 Cambio en main
+$ git switch -q main
+$ git commit -q -am "Cambia el título del README"
+
+### 3.3 Árbol de todas las ramas
+$ git log --oneline --graph --all
+* 7b997a3 Añade el virtual host de la intranet
+| * 07ec594 Cambia el título del README
+|/  
+* 1f3b48a Ignora los registros y el archivo de secretos
+* eddb780 Revert "Elimina el README"
+* 74dea2f Elimina el README
+* bf684e1 Añade el puerto de FTP a la lista de puertos
+* d7fa955 Añade la lista de puertos de los servicios
+* 6546a7e Añade el README con el propósito del repositorio
+
+### 3.4 Fusionar apache en main y borrar la rama
+$ git merge --no-edit apache
+Merge made by the 'ort' strategy.
+ config/vhost-intranet.conf | 6 ++++++
+ 1 file changed, 6 insertions(+)
+ create mode 100644 config/vhost-intranet.conf
+$ git branch -d apache
+Deleted branch apache (was 7b997a3).
+$ git log --oneline --graph
+*   1589d61 Merge branch 'apache'
+|\  
+| * 7b997a3 Añade el virtual host de la intranet
+* | 07ec594 Cambia el título del README
+|/  
+* 1f3b48a Ignora los registros y el archivo de secretos
+* eddb780 Revert "Elimina el README"
+* 74dea2f Elimina el README
+* bf684e1 Añade el puerto de FTP a la lista de puertos
+* d7fa955 Añade la lista de puertos de los servicios
+* 6546a7e Añade el README con el propósito del repositorio
+
+### 3.5 Conflicto
+$ git switch -q -c puertos
+$ git commit -q -am "Cambia HTTP al puerto 8080"
+$ git switch -q main
+$ git commit -q -am "Indica que HTTP redirige a HTTPS"
+$ git merge puertos
+Auto-merging config/puertos.txt
+CONFLICT (content): Merge conflict in config/puertos.txt
+Automatic merge failed; fix conflicts and then commit the result.
+$ git status --short
+UU config/puertos.txt
+$ cat config/puertos.txt
+<<<<<<< HEAD
+HTTP   80/tcp   (redirige a HTTPS)
+=======
+HTTP   8080/tcp
+>>>>>>> puertos
+HTTPS  443/tcp
+SSH    22/tcp
+MySQL  3306/tcp
+FTP    21/tcp
+$ cat config/puertos.txt
+HTTP   80/tcp   (redirige a HTTPS)
+HTTPS  443/tcp
+SSH    22/tcp
+MySQL  3306/tcp
+FTP    21/tcp
+$ git add config/puertos.txt
+$ git commit -q -m "Fusiona puertos: HTTP se queda en el 80 y redirige a HTTPS"
+$ git branch -d puertos
+Deleted branch puertos (was 78a0122).
+$ git log --oneline --graph --all
+*   17aefc7 Fusiona puertos: HTTP se queda en el 80 y redirige a HTTPS
+|\  
+| * 78a0122 Cambia HTTP al puerto 8080
+* | 570686a Indica que HTTP redirige a HTTPS
+|/  
+*   1589d61 Merge branch 'apache'
+|\  
+| * 7b997a3 Añade el virtual host de la intranet
+* | 07ec594 Cambia el título del README
+|/  
+* 1f3b48a Ignora los registros y el archivo de secretos
+* eddb780 Revert "Elimina el README"
+* 74dea2f Elimina el README
+* bf684e1 Añade el puerto de FTP a la lista de puertos
+* d7fa955 Añade la lista de puertos de los servicios
+* 6546a7e Añade el README con el propósito del repositorio
